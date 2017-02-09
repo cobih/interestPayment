@@ -1,9 +1,8 @@
 <?php
 
 function totalInterestPayment($principal, $apr, $term, $draws, $first_disbursement) {
-  $total_months = $term;
   
-  $monthly_interest_rate = $apr / $total_months / 100;
+  $monthly_interest_rate = $apr / $term / 100;
   
   $payments = array();
   

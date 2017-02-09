@@ -1,32 +1,32 @@
 <?php
 
 function totalInterestPayment($principal, $apr, $term, $draws, $first_disbursement) {
-  $totalMonths = $term;
+  $total_months = $term;
   
-  $monthlyInterestRate = $apr / $totalMonths / 100;
+  $monthly_interest_rate = $apr / $total_months / 100;
   
-  $Payments = array();
+  $payments = array();
   
   for ($draw = 0; $draw <= $draws; $draw++) {
       if ($draw === 0) {
           $remaining_funds = $principal - $first_disbursement;
           
-          $firstMonthPayment = $monthlyInterestRate * $first_disbursement;
+          $first_month_payment = $monthly_interest_rate * $first_disbursement;
           
-          array_push($Payments, $firstMonthPayment);
+          array_push($payments, $first_month_payment);
           
           echo "your first disbursment is $".$first_disbursement. "<br>";
-          echo "your first month payment is $".$firstMonthPayment. "<br>";
+          echo "your first month payment is $".$first_month_payment. "<br>";
           echo "your remaining funds is $".$remaining_funds. "<br>";
       } else {
           $disbursed_funds = $first_disbursement + $remaining_funds * ($draw / $draws);
           
-          $newMonthlyPayment = $monthlyInterestRate * $disbursed_funds;
+          $new_monthly_payment = $monthly_interest_rate * $disbursed_funds;
           
-          array_push($Payments, $newMonthlyPayment);
+          array_push($Payments, $new_monthly_payment);
          
           echo "your total amount disbursed is $".$disbursed_funds. "<br>";
-          echo "and your payment this month is $".$newMonthlyPayment. "<br>";
+          echo "and your payment this month is $".$new_monthly_payment. "<br>";
       }
   }
           
